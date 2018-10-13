@@ -1,0 +1,33 @@
+{
+  "name": "electron-ssl-pinning",
+  "version": "0.0.0",
+  "description": "Prevents MITM in your Electron apps",
+  "main": "lib/index.js",
+  "bin": {
+    "fetch-ssl-pinning-config": "bin/fetch-ssl-pinning-config"
+  },
+  "scripts": {
+    "test": "flow"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dialogs/electron-ssl-pinning.git"
+  },
+  "keywords": [
+    "electron",
+    "mitm",
+    "ssl",
+    "tls"
+  ],
+  "author": "Nikita Gusakov <gusnkt@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/dialogs/electron-ssl-pinning/issues"
+  },
+  "homepage": "https://github.com/dialogs/electron-ssl-pinning#readme",
+  "devDependencies": {
+    "@types/node": "10.11.7",
+    "electron": "3.0.4",
+    "typescript": "3.1.3"
+  }
+}
