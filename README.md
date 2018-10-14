@@ -1,7 +1,7 @@
 Electron SSL Pinning
 ====================
 
-Prevents MITM in your Electron apps.
+Prevents MITM in Electron applications.
 
 Installation
 ------------

@@ -1,13 +1,19 @@
 {
   "name": "electron-ssl-pinning",
   "version": "0.0.0",
-  "description": "Prevents MITM in your Electron apps",
+  "description": "Prevents MITM in Electron applications",
   "main": "lib/index.js",
   "bin": {
     "fetch-ssl-pinning-config": "bin/fetch-ssl-pinning-config"
   },
   "scripts": {
-    "test": "flow"
+    "test": "exit 0",
+    "build": "tsc",
+    "preversion": "npm test",
+    "postversion": "npm run release",
+    "prerelease": "npm run build",
+    "release": "git push --follow-tags",
+    "postrelease": "npm publish"
   },
   "repository": {
     "type": "git",
