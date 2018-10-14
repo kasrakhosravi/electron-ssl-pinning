@@ -3,6 +3,8 @@ Electron SSL Pinning
 
 Prevents MITM in Electron applications.
 
+[What? MITM?](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#Introduction)
+
 Installation
 ------------
 
