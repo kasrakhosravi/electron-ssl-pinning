@@ -7,7 +7,8 @@
     "fetch-ssl-pinning-config": "bin/fetch-ssl-pinning-config"
   },
   "scripts": {
-    "test": "exit 0",
+    "test": "jest",
+    "prebuild": "rm -rf lib/",
     "build": "tsc",
     "preversion": "npm test",
     "postversion": "npm run release",
@@ -32,8 +33,14 @@
   },
   "homepage": "https://github.com/dialogs/electron-ssl-pinning#readme",
   "devDependencies": {
+    "@jest-runner/electron": "2.0.2",
+    "@types/electron": "1.6.10",
+    "@types/jest": "24.0.17",
     "@types/node": "12.7.1",
-    "electron": "6.0.1",
+    "electron": "6.0.2",
+    "jest": "24.8.0",
+    "jest-junit": "7.0.0",
+    "ts-jest": "24.0.2",
     "typescript": "3.5.3"
   }
 }

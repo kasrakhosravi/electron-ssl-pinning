@@ -5,23 +5,30 @@
 import { CertificateVerifyProcRequest } from 'electron';
 
 type Config = Array<{
-  domain: string,
-  strict: boolean,
-  fingerprints: Array<string>
+  domain: string;
+  strict: boolean;
+  fingerprints: Array<string>;
 }>;
 
-function createVerificator(config: Config) {
+// https://electronjs.org/docs/api/session#sessetcertificateverifyprocproc
+export const SSL_DISABLE_FERIFICATION = 0;
+export const SSL_FAILURE = -2;
+export const SSL_USE_CHROME_VERIFICATION = -3;
+
+export function createSslVerificator(config: Config) {
   config.forEach(({ domain }) => {
     const wildcardCount = domain.match(/\*/g);
     if (wildcardCount && wildcardCount.length > 1) {
       throw new Error('Wrong wildcard format specified. Use "*.example.org".');
-    }    
+    }
   });
 
   const rules = config.map((rule) => {
     const fingerprintSet = new Set(rule.fingerprints);
-    const hostnameRegex = new RegExp('^' + rule.domain.replace('*.', '.*\\.?') + '$');
-    
+    const hostnameRegex = new RegExp(
+      '^' + rule.domain.replace('*.', '.*\\.?') + '$'
+    );
+
     return (hostname: string, fingerprints: Array<string>) => {
       if (!hostnameRegex.test(hostname)) {
         return false;
@@ -35,18 +42,23 @@ function createVerificator(config: Config) {
     };
   });
 
-  return (request: CertificateVerifyProcRequest, callback: (verificationResult: number) => void) => {
-    const fingerprints: Array<string> = []; 
-    for (let cert = request.certificate; cert && cert !== cert.issuerCert; cert = cert.issuerCert) {
+  return (
+    request: CertificateVerifyProcRequest,
+    callback: (verificationResult: number) => void
+  ) => {
+    const fingerprints: Array<string> = [];
+    for (
+      let cert = request.certificate;
+      cert && cert !== cert.issuerCert;
+      cert = cert.issuerCert
+    ) {
       fingerprints.push(cert.fingerprint);
     }
 
     if (rules.some((rule) => rule(request.hostname, fingerprints))) {
-      callback(-3)
+      callback(-3);
     } else {
       callback(-2);
     }
   };
 }
-
-module.exports = createVerificator;

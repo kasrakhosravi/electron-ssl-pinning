@@ -8,7 +8,7 @@ Prevents MITM in Electron applications.
 Installation
 ------------
 
-```
+```bash
 npm install electron-ssl-pinning
 ```
 
@@ -16,7 +16,8 @@ Usage
 -----
 
 Retrive pinning config using following command
-```sh
+
+```bash
 fetch-ssl-pinning-config google.com
 ```
 
@@ -24,7 +25,7 @@ Then apply this config to Electron session.
 
 ```js
 const { session } = require('electron');
-const createSslVerificator = require('electron-ssl-pinning');
+const { default: createSslVerificator } = require('electron-ssl-pinning');
 
 session.defaultSession.setCertificateVerifyProc(
   createSslVerificator([

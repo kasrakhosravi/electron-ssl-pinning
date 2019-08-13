@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
-const fetchSslPinningConfig = require('../lib/fetchSslPinningConfig');
-const URL = require('url').URL;
+const {
+  default: fetchSslPinningConfig
+} = require('../lib/fetchSslPinningConfig');
 
 const promises = process.argv
   .slice(2)
