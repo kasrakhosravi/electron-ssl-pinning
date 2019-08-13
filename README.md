@@ -25,7 +25,7 @@ Then apply this config to Electron session.
 
 ```js
 const { session } = require('electron');
-const { default: createSslVerificator } = require('electron-ssl-pinning');
+const { createSslVerificator } = require('electron-ssl-pinning');
 
 session.defaultSession.setCertificateVerifyProc(
   createSslVerificator([
