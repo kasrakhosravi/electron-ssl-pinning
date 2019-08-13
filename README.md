@@ -1,6 +1,9 @@
 Electron SSL Pinning
 ====================
 
+[![Build Status](https://img.shields.io/circleci/build/github/dialogs/electron-ssl-pinning/master.svg)](https://circleci.com/gh/dialogs/electron-ssl-pinning)
+[![Code Coverage](https://codecov.io/gh/dialogs/electron-ssl-pinning/branch/master/graph/badge.svg)](https://codecov.io/gh/dialogs/electron-ssl-pinning)
+
 Prevents MITM in Electron applications.
 
 [What? MITM?](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#Introduction)
