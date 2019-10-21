@@ -49,7 +49,10 @@ describe('createSslVerificator', () => {
 
     await window.loadURL('https://www.example.org');
 
-    expect(callbackResults).toEqual([SSL_USE_CHROME_VERIFICATION]);
+    expect(callbackResults.length).toBeGreaterThan(0);
+    for (const result of callbackResults) {
+      expect(result).toBe(SSL_USE_CHROME_VERIFICATION);
+    }
   });
 
   it('should correctly handle non strict validation with head fingerprint', async () => {
@@ -81,6 +84,9 @@ describe('createSslVerificator', () => {
 
     await window.loadURL('https://www.example.org');
 
-    expect(callbackResults).toEqual([SSL_USE_CHROME_VERIFICATION]);
+    expect(callbackResults.length).toBeGreaterThan(0);
+    for (const result of callbackResults) {
+      expect(result).toBe(SSL_USE_CHROME_VERIFICATION);
+    }
   });
 });
