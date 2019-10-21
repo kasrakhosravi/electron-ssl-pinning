@@ -10,5 +10,5 @@
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "exclude": ["lib", "__tests__"]
+  "exclude": ["lib", "src/__tests__"]
 }

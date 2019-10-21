@@ -11,7 +11,7 @@ type Config = Array<{
 }>;
 
 // https://electronjs.org/docs/api/session#sessetcertificateverifyprocproc
-export const SSL_DISABLE_FERIFICATION = 0;
+export const SSL_DISABLE_VERIFICATION = 0;
 export const SSL_FAILURE = -2;
 export const SSL_USE_CHROME_VERIFICATION = -3;
 
@@ -56,9 +56,9 @@ export function createSslVerificator(config: Config) {
     }
 
     if (rules.some((rule) => rule(request.hostname, fingerprints))) {
-      callback(-3);
+      callback(SSL_USE_CHROME_VERIFICATION);
     } else {
-      callback(-2);
+      callback(SSL_FAILURE);
     }
   };
 }
