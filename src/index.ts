@@ -2,7 +2,7 @@
  * Copyright 2018 Dialog LLC <info@dlg.im>
  */
 
-import { CertificateVerifyProcRequest } from 'electron';
+import { CertificateVerifyProcProcRequest } from 'electron';
 
 type Config = Array<{
   domain: string;
@@ -43,7 +43,7 @@ export function createSslVerificator(config: Config) {
   });
 
   return (
-    request: CertificateVerifyProcRequest,
+    request: CertificateVerifyProcProcRequest,
     callback: (verificationResult: number) => void
   ) => {
     const fingerprints: Array<string> = [];
